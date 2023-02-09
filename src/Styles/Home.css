@@ -1,0 +1,29 @@
+.HM-bg {
+    background: rgb(34, 193, 195);
+    background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    height: 100vh;
+}
+.HM-bg-note{
+    background-color: #00308F;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+.HM-btn-addNote{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border-radius: 30;
+    -webkit-border-radius: 30;
+    -moz-border-radius: 30;
+    -ms-border-radius: 30;
+    -o-border-radius: 30;
+}
+.HM-headName{
+    border: 5px solid #00308f;
+    color: black;
+    background-color: white;
+    text-transform: capitalize;
+}
+.HM-Date{
+    color: gray;
+}

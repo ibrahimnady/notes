@@ -9,35 +9,24 @@ import { useParams } from 'react-router-dom';
 
 
 export default function Home() {
-    const { } = useContext(Notes);
-    const [profile, setProfile] = useState([])
+    const { profile, getprofile } = useContext(Notes);
+    let praams = useParams()
 
-    async function getprofile() {
-        const URL = 'https://note-be.vercel.app/api/v1/note';
-        let { data } = await axios.get(URL, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('userToken')}`
-            }
-        })
-        setProfile(data.user.notes)
-        // console.log(data)    
-        // console.log(profile)
-    }
 
     useEffect(() => {
         getprofile()
     }, []);
-    console.log(profile)
-    //function delete one product
+    // function delete one product
+    console.log(profile.length);
 
-    const deleteNote = (note) => {
+    const deleteNote = () => {
         Swal.fire({
-            title: `Are You Sure Delete "${note.title}" `,
+            title: `Are You Sure Delete "${profile.title}" `,
             showCancelButton: true,
         }).then((data) => {
-            const URL = `https://note-be.vercel.app/api/v1/note/deleteNote/${note._id}`;
+            const URL = `https://note-be.vercel.app/api/v1/note/deleteNote/`;
             if (data.isConfirmed) {
-                let { data } =  axios.delete(URL, {
+                axios.delete(URL, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('userToken')}`
                     }
@@ -49,20 +38,21 @@ export default function Home() {
     }
 
 
+
     return (
         <>
             <div className='HM-bg'>
                 <div className=' container-fluid text-white text-center'>
-                    <div className="row ">
+                    <div className="row g-3 p-3 ">
                         {/* note's */}
                         {
                             profile.map((N, _id) =>
                                 <div key={_id} className=" col-sm-12 col-md-3">
-                                    <div className='HM-headName w-75'>
+                                    <div className='HM-headName '>
                                         <h1 className=''>{N.title}</h1>
                                         <span className='HM-Date'>{ }</span>
                                     </div>
-                                    <div className='HM-bg-note w-75 text-center d-flex justify-align-content-between align-align-content-center'>
+                                    <div className='HM-bg-note  text-center d-flex justify-align-content-between align-align-content-center'>
                                         <div className='w-100'>
                                             <p>{N.desc}</p>
                                         </div>
@@ -82,7 +72,7 @@ export default function Home() {
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button onClick={deleteNote} type="button" className=" btn " >
+                                                    <button onClick={() => deleteNote()} type="button" className=" btn " >
                                                         <i className="fa-solid fa-trash me-3"></i>
                                                         Delete
                                                     </button>

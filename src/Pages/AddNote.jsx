@@ -17,12 +17,10 @@ export default function AddNote() {
                         <input onChange={getNote} type="text" className="form-control" id="title" name='title' placeholder='title' />
                         <label htmlFor="title">head Note</label>
                     </div>
-                    <div className="form-floating w-100  m-auto">
-                        <textarea onChange={getNote} type="text" className="form-control" id="desc" name='desc' placeholder='desc' />
-                        <label htmlFor="desc">Description</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary mt-3 mb-5">creat</button>
-                    
+                    <textarea rows="10" onChange={getNote} type="text" className="form-control" id="desc" name='desc' placeholder='desc' />
+
+                    <button type="submit" className="btn btn-primary mt-3 mb-5">create</button>
+
                 </form>
             </div>
         </>

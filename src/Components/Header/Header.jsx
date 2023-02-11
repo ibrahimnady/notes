@@ -11,13 +11,13 @@ export default function Header(props) {
                     <Link className="navbar-brand fw-bold fs-3 NAV-logo " to="intro"><i className="fa-solid fa-house-user"></i></Link>
                     <div className='NAV-tab'>
                         <div className="NAV-link" >
-                            {/* {
+                            {
                                 props.userData ? <>
                                     <div className='fw-bold fs-3'>
-                                        <Link className="nav-link" to="home">My Note <i className="fa-solid fa-note-sticky"></i></Link>
+                                        <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-note-sticky"></i></Link>
                                     </div>
                                 </> : ""
-                            } */}
+                            }
                         </div>
                         <div className="d-flex">
                             {

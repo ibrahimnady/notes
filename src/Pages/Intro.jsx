@@ -4,26 +4,18 @@ import Footer from '../Components/Footer/Footer'
 import Type from '../Components/Type'
 import '../Styles/Intro.css'
 import { Link } from 'react-router-dom';
+import { Notes } from './../Context/APIContext';
 
 
 
 
 export default function Intro(props) {
-    const [profile, setProfile] = useState("")
 
-    async function getUserName() {
-        const URL = 'https://note-be.vercel.app/api/v1/note';
-        let { data } = await axios.get(URL, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('userToken')}`
-            }
-        })
-        setProfile(data.user)
-        // console.log(data)    
-        // console.log(profile)
-    }
+    const { userName, getprofile } = useContext(Notes);
+
+
     useEffect(() => {
-        getUserName()
+        getprofile()
     }, []);
 
     return (
@@ -37,9 +29,9 @@ export default function Intro(props) {
                 <div className='IN-body text-center mt-5'>
                     {
                         props.userData ? <>
-                            <p className=' text-black fs-1 fw-bold'> Wellcom ,{profile.userName} <br /> to see your note's please click here </p>
+                            <p className=' text-black fs-1 fw-bold'> Wellcom ,{userName.userName}  </p>
                             <Link to="home" className='' ><button className=' btn btn-info fw-bold fs-1 me-3'>View </button></Link>
-                            <Link to="addnote" className='' ><button className=' btn btn-info fw-bold fs-1'>Creat Note </button></Link>
+                            <Link to="addnote" className='' ><button className=' btn btn-info fw-bold fs-1'>Create </button></Link>
                         </> : <>
                             <p className=' text-black fs-1 fw-bold'> Please register first <br /> if you are not a member</p>
                             <Link to="login" className='me-2' ><button className='btn btn-success  fs-1'>Sign In</button></Link>

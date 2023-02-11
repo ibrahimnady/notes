@@ -3,6 +3,7 @@ import '../Styles/Register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
+import Footer from './../Components/Footer/Footer';
 
 
 
@@ -48,18 +49,18 @@ export default function Register() {
     function validateRegisterForm(user) {
         let schema = Joi.object({
             userName: Joi.string().alphanum().min(3).max(8).required(),
-            email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-            password: Joi.string().pattern(/^[A-Za-z0-9]{3,8}$/),
-            cpassword: Joi.string().pattern(/^[A-Za-z0-9]{3,8}$/)
+            email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+            password: Joi.string().pattern(/^[A-Za-z0-9]{3,15}$/).required(),
+            cpassword: Joi.string().pattern(/^[A-Za-z0-9]{3,15}$/).required(),
         })
         return schema.validate(user, { abortEarly: false });
     }
     return (
         <>
             <div className='RG-bg pt-5'>
-                {error ? <div className="alert alert-danger">{error}</div> : ''}
                 <form onSubmit={submitRegister} className=' RG-form container text-center '>
                     <h1 className={'mt-3 mb-5 text-white text-center'}>Register</h1>
+                    {error ? <div className="alert alert-danger">{error}</div> : ''}
                     {errorList.map((error, index) => {
                         if (index === 4) {
                             return <div key={index} className='alert alert-danger'>Password invalid</div>
@@ -86,6 +87,9 @@ export default function Register() {
                     </div>
                     <button type="submit" className="btn btn-primary mt-3">{isLoding ? <i className='fas fa-spinner fa-spin'></i> : 'Register'}</button>
                 </form>
+            </div>
+            <div className=''>
+                <Footer />
             </div>
         </>
     )

@@ -7,6 +7,9 @@ import Login from './Pages/Login';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode'
 import BounceLoader from "react-spinners/BounceLoader";
+import Intro from './Pages/Intro';
+import AddNote from './Pages/AddNote';
+
 
 
 
@@ -22,7 +25,6 @@ function App() {
     setTimeout(() => {
       setLoading(false)
     }, 1000)
-    // الاف ديه مشكلتها انو بيدخل علي الايلس علي طول مش بيدخل علي الجيت يوزير خالص 
     if (localStorage.getItem('userToken')) {
       getUserData();
     } else {
@@ -32,14 +34,13 @@ function App() {
 
   function getUserData() {
     let decodeToken = jwtDecode(localStorage.getItem('userToken'));
-    // بص يا معلم الايرور هنا لو انت شيلت الكومين من علي السيت يوزير هيضرب ايرور معاك 
-    // setUserData(decodeToken);
+    setUserData(decodeToken);
     // console.log(decodeToken)
   }
   function logOut() {
     localStorage.removeItem('userToken');
     setUserData(null);
-    Navigate('/Login');
+    Navigate('/login');
   }
   function ProdectRoute({ children }) {
     if (!localStorage.getItem('userToken')) {
@@ -65,12 +66,17 @@ function App() {
             <>
               <Header userData={userData} logOut={logOut} />
               <Routes>
-                <Route path='/' element={<Register />} />
+                <Route path='/' element={<Intro userData={userData} />} />
                 <Route path='*' element={<h1 className=' text-white'>404 Not Found</h1>} />
                 <Route path='/register' element={<Register />} />
                 <Route path='login/register' element={<Register />} />
                 <Route path='/login' element={<Login getUserData={getUserData} />} />
+                <Route path='/intro' element={<Intro userData={userData} />} />
+                <Route path='/intro/register' element={<Register />} />
+                <Route path='/intro/login' element={<Login />} />
                 <Route path='/home' element={<ProdectRoute><Home /></ProdectRoute>} />
+                <Route path='intro/home' element={<ProdectRoute><Home /></ProdectRoute>} />
+                <Route path='intro/addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
               </Routes>
             </>
         }

@@ -1,57 +1,29 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../Styles/AddNote.css'
+import { Notes } from '../Context/APIContext';
+
+
 
 export default function AddNote() {
-    const [note, setNote] = useState({
-        title: "",
-        description: "",
-    })
-    function getNote(e) {
-        let myNote = { ...note }
-        myNote[e.target.name] = e.target.value;
-        setNote(myNote)
-        // console.log(note);
-    }
-    async function createNote(e) {
-        e.preventDefault()
-        const URL = '';
-        let response = await axios.post(URL, note)
+    const { getNote, createNote } = useContext(Notes);
 
-    }
     return (
         <>
-            {/* button open model */}
-            <button type="button" className="HM-btn-addNote btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNote">
-                <i className="fa-solid fa-file-pen fs-1"></i>
-            </button>
-
-            {/* model add note */}
-            <div className="modal fade" id="addNote" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">New Note</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form onSubmit={createNote}>
-                            <div className="modal-body">
-                                <div className="form-floating mb-3">
-                                    <input onChange={getNote} type="text" className="form-control" id="newNote" name='title' placeholder=" " />
-                                    <label htmlFor="newNote">Name Note :</label>
-                                </div>
-                                <div className="form-floating">
-                                    <textarea onChange={getNote} className="form-control" placeholder=" " name='descrption' id="descrption"></textarea>
-                                    <label htmlFor="floatingTextarea">Descrption :</label>
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary">Add Note</button>
-                            </div>
-                        </form>
+            <div className='AN-bg pt-5' >
+                <form onSubmit={createNote} className=' AN-form container text-center '>
+                    <h1 className={'mt-3 mb-5 text-white text-center'}>Creat Note</h1>
+                    <div className={"form-floating mb-5 w-100 me-5 m-auto"}>
+                        <input onChange={getNote} type="text" className="form-control" id="title" name='title' placeholder='title' />
+                        <label htmlFor="title">head Note</label>
                     </div>
-                </div>
+                    <div className="form-floating w-100  m-auto">
+                        <textarea onChange={getNote} type="text" className="form-control" id="desc" name='desc' placeholder='desc' />
+                        <label htmlFor="desc">Description</label>
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-3 mb-5">creat</button>
+                    
+                </form>
             </div>
         </>
     )

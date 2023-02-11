@@ -1,3 +1,43 @@
 .NAV-bg{
     background-color: #302c2d;
 }
+.NAV-tab{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.NAV-logo{
+    border: solid goldenrod;
+    padding: 5px;
+    color: white;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+}
+.NAV-logo:hover{
+    color: white;
+    background-color: rgb(37, 0, 80);
+    transition: all 1ms;
+    -webkit-transition: all 1ms;
+    -moz-transition: all 1ms;
+    -ms-transition: all 1ms;
+    -o-transition: all 1ms;
+}
+.NAV-link{
+    color: white;
+}
+.NAV-link:hover{
+    color: gold;
+}
+@media only screen and (max-width: 1000px) {
+    .NAV-tab{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        
+        
+    }
+}

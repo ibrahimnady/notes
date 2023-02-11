@@ -4,10 +4,7 @@ import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
-
-
-
-
+import Footer from './../Components/Footer/Footer';
 
 export default function Login(props) {
     let Navigate = useNavigate();
@@ -40,7 +37,7 @@ export default function Login(props) {
             if (data.message == "login success") {
                 localStorage.setItem('userToken', data.token)
                 props.getUserData();
-                Navigate('/home')
+                Navigate('/intro')
             } else {
                 setError(data.message)
                 setIsLoding(false)
@@ -79,6 +76,9 @@ export default function Login(props) {
                     <button type="submit" className="btn btn-primary mt-3 mb-5">{isLoding ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}</button>
                     <p className='text-white  fw-bold'>If You Don't Have Account Please go to <Link to="register">Register</Link> </p>
                 </form>
+            </div>
+            <div className=''>
+                <Footer/>
             </div>
         </>
     )

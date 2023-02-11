@@ -6,11 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import App from './App';
 import { HashRouter as Router } from "react-router-dom";
+import { NotesContextProvider } from './Context/APIContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <App />
+    <NotesContextProvider>
+      <App />
+    </NotesContextProvider>
   </Router>
 );
 

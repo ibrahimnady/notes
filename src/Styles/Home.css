@@ -1,6 +1,5 @@
 .HM-bg {
-    background: rgb(34, 193, 195);
-    background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
     height: 100vh;
 }
 .HM-bg-note{

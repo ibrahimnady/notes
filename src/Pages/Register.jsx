@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Styles/Register.css'
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
 import Footer from './../Components/Footer/Footer';
@@ -38,7 +38,7 @@ export default function Register() {
             setIsLoding(true)
             let { data } = await axios.post(URL, user)
             // console.log(data);
-            if (data.message == "Added") {
+            if (data.message === "Added") {
                 Navigate('/login')
             } else {
                 setError(data.message)

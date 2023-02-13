@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useContext, useEffect } from 'react'
 import Footer from '../Components/Footer/Footer'
 import Type from '../Components/Type'
 import '../Styles/Intro.css'
@@ -10,9 +9,7 @@ import { Notes } from './../Context/APIContext';
 
 
 export default function Intro(props) {
-
     const { userName, getprofile } = useContext(Notes);
-
 
     useEffect(() => {
         getprofile()
@@ -29,7 +26,7 @@ export default function Intro(props) {
                 <div className='IN-body text-center mt-5'>
                     {
                         props.userData ? <>
-                            <p className=' text-black fs-1 fw-bold'> Wellcom ,{userName.userName}  </p>
+                            <p className=' text-black fs-2 fw-bold'> Wellcom , <span className=' text-black fs-1'>{userName.userName}</span></p>
                             <Link to="home" className='' ><button className=' btn btn-info fw-bold fs-1 me-3'>View </button></Link>
                             <Link to="addnote" className='' ><button className=' btn btn-info fw-bold fs-1'>Create </button></Link>
                         </> : <>

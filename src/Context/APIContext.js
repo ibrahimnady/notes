@@ -1,23 +1,33 @@
 import axios from 'axios';
+import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
-const { createContext, useState, useEffect } = require("react");
+const { createContext, useState } = require("react");
 export let Notes = createContext([]);
 
 export function NotesContextProvider(props) {
     let Navigate = useNavigate()
-
     const [profile, setProfile] = useState([])
     const [userName, setUserName] = useState("")
     const [note, setNote] = useState({
         title: "",
         desc: ""
     })
-    
+    const [edit, setEdit] = useState({
+        title: "",
+        desc: ""
+    });
+
     function getNote(e) {
         let myNote = { ...note }
         myNote[e.target.name] = e.target.value;
         setNote(myNote)
-        // console.log(note);
+        
+    }
+    function getEdit(e) {
+        let myEdit = { ...edit }
+        myEdit[e.target.name] = e.target.value;
+        setEdit(myEdit)
+        console.log(edit);
     }
 
     const createNote = async (e) => {
@@ -29,12 +39,10 @@ export function NotesContextProvider(props) {
             }
         })
         setNote(data)
-        // console.log(data)
-        if (data.message == "Done") {
+        if (data.message === "Done") {
             Navigate('/home')
         } else {
             console.log("fuck error")
-            // console.log(note);
         }
     }
 
@@ -49,10 +57,32 @@ export function NotesContextProvider(props) {
         setUserName(data.user)
     }
 
+    const deleteNote = (N) => {
+        Swal.fire({
+            title: `Are You Sure Delete "${N.title}" `,
+            showCancelButton: true,
+        }).then((data) => {
+            const URL = `https://note-be.vercel.app/api/v1/note/deleteNote/${N._id}`;
+            if (data.isConfirmed) {
+                axios.delete(URL, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+                    }
+                })
+                getprofile();
+            } else {
+                console.log("error");
+            }
+        });
+    }
 
 
     return <Notes.Provider value={
         {
+            setEdit,
+            edit,
+            getEdit,
+            deleteNote,
             userName,
             getprofile,
             profile,

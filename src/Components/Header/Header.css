@@ -27,10 +27,12 @@
     -o-transition: all 1ms;
 }
 .NAV-link{
-    color: white;
+    
+    padding: 10px;
+    font-weight: bold;
 }
 .NAV-link:hover{
-    color: gold;
+    color: blue;
 }
 @media only screen and (max-width: 1000px) {
     .NAV-tab{

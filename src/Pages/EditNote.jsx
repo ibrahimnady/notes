@@ -1,34 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../Styles/EditNote.css'
-export default function EditNote(props) {
+import { Notes } from '../Context/APIContext';
+import axios from 'axios';
+export default function EditNote() {
+    const { profile, getprofile, getEdit, edit, setEdit } = useContext(Notes);
+    let param = useParams()
+    let Navigate = useNavigate()
+    const editeNotes = async (e) => {
+        e.preventDefault()
+        const URL = `https://note-be.vercel.app/api/v1/note/editNote/${param.id}`;
+        let { data } = await axios.patch(URL, edit, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('userToken')}`
+            }
+        })
+        setEdit(data)
+        Navigate('/home')
+        getprofile()
+    }
+    console.log(param.id);
     return (
         <>
-            {/* open edit note */}
-            <div className="modal fade" id="editeNote" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Note</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label htmlFor="floatingInput">Name Note :</label>
-                            </div>
-                            <div className="form-floating">
-                                <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                <label htmlFor="floatingTextarea">Descrption :</label>
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save Change</button>
-                        </div>
+            <div className='EN-bg pt-5 pb-5' >
+                <form onSubmit={editeNotes} className=' EN-form container text-center '>
+                    <h1 className={'mt-3 mb-5 text-white text-center'}>Edit Note</h1>
+                    <div className={"form-floating mb-5 w-100 me-5 m-auto"}>
+                        <input onChange={getEdit} type="text" className="form-control" id="title" name='title' placeholder='title' />
+                        <label htmlFor="title">head Note</label>
                     </div>
-                </div>
+                    <textarea onChange={getEdit} rows="10" type="text" className="form-control" id="desc" name='desc' placeholder='desc' />
+                    <button type="submit" className="btn btn-success mt-3 mb-5">Edit</button>
+                </form>
             </div>
-
         </>
     )
 }

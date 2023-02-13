@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-// import Style from '../Styles/Login.module.css'
+import React, {  useState } from 'react'
 import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
 import Footer from './../Components/Footer/Footer';
+
 
 export default function Login(props) {
     let Navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function Login(props) {
             setIsLoding(true)
             let { data } = await axios.post(URL, user)
             // console.log(data);
-            if (data.message == "login success") {
+            if (data.message === "login success") {
                 localStorage.setItem('userToken', data.token)
                 props.getUserData();
                 Navigate('/intro')
@@ -47,7 +47,7 @@ export default function Login(props) {
     function validateLoginForm(user) {
         let schema = Joi.object({
             email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-            password: Joi.string().pattern(/^[A-Za-z0-9]{3,8}$/)
+            password: Joi.string().pattern(/^[A-Za-z0-9]{3,15}$/)
         })
         return schema.validate(user, { abortEarly: false });
     }
@@ -78,7 +78,7 @@ export default function Login(props) {
                 </form>
             </div>
             <div className=''>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

@@ -10,12 +10,28 @@ export default function Header(props) {
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-3 NAV-logo " to="intro"><i className="fa-solid fa-house-user"></i></Link>
                     <div className='NAV-tab'>
-                        <div className="NAV-link" >
+                        <div className="" >
                             {
                                 props.userData ? <>
-                                    <div className='fw-bold fs-3'>
+                                    <div className="dropdown">
+                                        <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Menu
+                                        </button>
+                                        <ul className="dropdown-menu ">
+                                            <div className='NAV-link'>
+                                                <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-pen"></i></Link>
+                                            </div>
+                                            <div className='NAV-link'>
+                                                <Link className="nav-link" to="intro/home">view Note's <i className="fa-solid fa-note-sticky"></i></Link>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    {/* <div className='fw-bold fs-3'>
                                         <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-note-sticky"></i></Link>
                                     </div>
+                                    <div className='fw-bold fs-3'>
+                                        <Link className="nav-link" to="addnote">view Note's <i className="fa-solid fa-note-sticky"></i></Link>
+                                    </div> */}
                                 </> : ""
                             }
                         </div>

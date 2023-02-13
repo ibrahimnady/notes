@@ -9,6 +9,8 @@ import jwtDecode from 'jwt-decode'
 import BounceLoader from "react-spinners/BounceLoader";
 import Intro from './Pages/Intro';
 import AddNote from './Pages/AddNote';
+import NoteDetails from './Pages/NoteDetails';
+import EditNote from './Pages/EditNote';
 
 
 
@@ -78,6 +80,18 @@ function App() {
                 <Route path='intro/home' element={<ProdectRoute><Home /></ProdectRoute>} />
                 <Route path='intro/addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
                 <Route path='addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
+                <Route path='/intro/home/notedetails' element={<ProdectRoute><NoteDetails /></ProdectRoute>} >
+                  <Route path=':id' element={<ProdectRoute><NoteDetails /></ProdectRoute>} />
+                </Route>
+                <Route path='/intro/home/editenote' element={<ProdectRoute><EditNote /></ProdectRoute>} >
+                  <Route path=':id' element={<ProdectRoute><NoteDetails /></ProdectRoute>} />
+                </Route>
+                <Route path='/home/editenote' element={<ProdectRoute><EditNote /></ProdectRoute>} >
+                  <Route path=':id' element={<ProdectRoute><NoteDetails /></ProdectRoute>} />
+                </Route>
+                <Route path='/home/notedetails' element={<ProdectRoute><NoteDetails /></ProdectRoute>} >
+                  <Route path=':id' element={<ProdectRoute><NoteDetails /></ProdectRoute>} />
+                </Route>
               </Routes>
             </>
         }

@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -38,6 +38,10 @@ export default function Login(props) {
                 localStorage.setItem('userToken', data.token)
                 props.getUserData();
                 Navigate('/intro')
+                // setTimeout(() => {
+                //     window.location.reload()
+                // }, 2000)
+
             } else {
                 setError(data.message)
                 setIsLoding(false)
@@ -54,7 +58,7 @@ export default function Login(props) {
 
     return (
         <>
-            <div className='LG-bg pt-5' >
+            <div className='LG-bg pt-5 pb-5' >
                 <form onSubmit={submitLogin} className=' LG-form container text-center '>
                     <h1 className={'mt-3 mb-5 text-white text-center'}>Login In</h1>
                     {errorList.map((error, index) => {
@@ -73,8 +77,8 @@ export default function Login(props) {
                         <input onChange={getUser} type="password" className="form-control" id="password" name='password' placeholder='password' />
                         <label htmlFor="password">Password</label>
                     </div>
-                    <button type="submit" className="btn btn-primary mt-3 mb-5">{isLoding ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}</button>
-                    <p className='text-white  fw-bold'>If You Don't Have Account Please go to <Link to="register">Register</Link> </p>
+                    <button type="submit" className="btn btn-primary  mt-3 mb-5">{isLoding ? <i className='fas fa-spinner fa-spin'></i> : 'Login'}</button>
+                    <p className='text-white  fw-bold'>If You Don't Have Account Please go to <Link className=' text-primary' to="register">Register</Link> </p>
                 </form>
             </div>
             <div className=''>

@@ -1,19 +1,47 @@
 .HM-bg {
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
-    min-height: 100vh;
-}
-.HM-bg-note{
-    background-color: #00308F;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    min-height      : 100vh;
 }
 
-.HM-headName{
-    border: 5px solid #00308f;
-    color: black;
-    background-color: white;
-    text-transform: capitalize;
+.HM-bg-note {
+    background-color     : #00308F;
+    border-radius        : 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius   : 10px;
+    -ms-border-radius    : 10px;
+    -o-border-radius     : 10px;
+    overflow             : hidden;
 }
-.HM-Date{
+
+.HM-headName {
+    border               : 5px solid #00308f;
+    color                : black;
+    background-color     : white;
+    text-transform       : capitalize;
+    border-radius        : 11px 11px;
+    -webkit-border-radius: 11px 11px;
+    -moz-border-radius   : 11px 11px;
+    -ms-border-radius    : 11px 11px;
+    -o-border-radius     : 11px 11px;
+}
+
+.HM-Date {
     color: gray;
 }
+
+.HM-bg_writeNote {
+    height         : 100vh;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    color          : black;
+}
+.HM-btn_writeNote{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: max-content;
+    margin-bottom: 5px;
+    
+}
+

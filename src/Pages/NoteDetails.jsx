@@ -24,7 +24,7 @@ export default function NoteDetails() {
         <>
             <div className='ND-bg'>
                 <div className='text-center ND-body'>
-                    <h1 className='text-black fw-bold ND-title'>{Ndetails.title}</h1>
+                    <h1 className='text-black fw-bold ND-title '>{Ndetails.title}</h1>
                     <p className='text-black  ND-desc'>{Ndetails.desc}</p>
                 </div>
             </div>

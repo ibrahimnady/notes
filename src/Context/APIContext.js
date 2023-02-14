@@ -21,7 +21,7 @@ export function NotesContextProvider(props) {
         let myNote = { ...note }
         myNote[e.target.name] = e.target.value;
         setNote(myNote)
-        
+
     }
     function getEdit(e) {
         let myEdit = { ...edit }
@@ -70,6 +70,9 @@ export function NotesContextProvider(props) {
                     }
                 })
                 getprofile();
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
             } else {
                 console.log("error");
             }
@@ -79,6 +82,7 @@ export function NotesContextProvider(props) {
 
     return <Notes.Provider value={
         {
+            note,
             setEdit,
             edit,
             getEdit,

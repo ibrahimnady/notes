@@ -1,3 +1,7 @@
+*::selection{
+    background-color: gold;
+    color: black;
+}
 .APP-loading {
     background     : rgb(99, 3, 209);
     background     : linear-gradient(90deg, rgba(99, 3, 209, 1) 0%, rgba(85, 13, 161, 1) 25%, rgba(203, 3, 209, 1) 100%);
@@ -7,6 +11,14 @@
     justify-content: center;
     align-items    : center;
 }
-a:hover{
+
+a:hover {
     color: black;
 }
+
+a {
+    color                    : white;
+    text-decoration-line     : none;
+    -moz-text-decoration-line: none;
+}
+

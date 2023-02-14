@@ -19,19 +19,14 @@ export default function Header(props) {
                                         </button>
                                         <ul className="dropdown-menu ">
                                             <div className='NAV-link'>
-                                                <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-pen"></i></Link>
+                                                <Link className="nav-link" to="intro/home">view Note's <i className="fa-solid fa-note-sticky"></i></Link>
                                             </div>
                                             <div className='NAV-link'>
-                                                <Link className="nav-link" to="intro/home">view Note's <i className="fa-solid fa-note-sticky"></i></Link>
+                                                <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-pen"></i></Link>
                                             </div>
                                         </ul>
                                     </div>
-                                    {/* <div className='fw-bold fs-3'>
-                                        <Link className="nav-link" to="addnote">Create Note <i className="fa-solid fa-note-sticky"></i></Link>
-                                    </div>
-                                    <div className='fw-bold fs-3'>
-                                        <Link className="nav-link" to="addnote">view Note's <i className="fa-solid fa-note-sticky"></i></Link>
-                                    </div> */}
+
                                 </> : ""
                             }
                         </div>

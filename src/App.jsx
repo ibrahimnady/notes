@@ -79,6 +79,8 @@ function App() {
                 <Route path='/home' element={<ProdectRoute><Home /></ProdectRoute>} />
                 <Route path='intro/home' element={<ProdectRoute><Home /></ProdectRoute>} />
                 <Route path='intro/addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
+                <Route path='home/addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
+                <Route path='intro/home/addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
                 <Route path='addnote' element={<ProdectRoute><AddNote /></ProdectRoute>} />
                 <Route path='/intro/home/notedetails' element={<ProdectRoute><NoteDetails /></ProdectRoute>} >
                   <Route path=':id' element={<ProdectRoute><NoteDetails /></ProdectRoute>} />

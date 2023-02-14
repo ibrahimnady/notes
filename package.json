@@ -1,6 +1,6 @@
 {
-  "homepage": "https://ibrahimnady.github.io/crud-note",
-  "name": "crud-note",
+  "homepage": "https://ibrahimnady.github.io/notes",
+  "name": "notes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

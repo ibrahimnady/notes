@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Styles/Register.css'
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
 import Footer from './../Components/Footer/Footer';
@@ -43,6 +43,7 @@ export default function Register() {
             } else {
                 setError(data.message)
                 setIsLoding(false);
+                console.log(data);
             }
         }
     }
@@ -57,7 +58,7 @@ export default function Register() {
     }
     return (
         <>
-            <div className='RG-bg pt-5'>
+            <div className='RG-bg pt-5 pb-5'>
                 <form onSubmit={submitRegister} className=' RG-form container text-center '>
                     <h1 className={'mt-3 mb-5 text-white text-center'}>Register</h1>
                     {error ? <div className="alert alert-danger">{error}</div> : ''}
@@ -85,7 +86,9 @@ export default function Register() {
                         <input onChange={getUser} type="password" className="form-control" id="cpassword" name='cpassword' placeholder='cpassword' />
                         <label htmlFor="cpassword">Confirm Password : </label>
                     </div>
-                    <button type="submit" className="btn btn-primary mt-3">{isLoding ? <i className='fas fa-spinner fa-spin'></i> : 'Register'}</button>
+                    <button type="submit" className="btn btn-primary  mt-3"> {isLoding ? <i className='fas fa-spinner fa-spin'/> : 'Register'}</button>
+
+
                 </form>
             </div>
             <div className=''>

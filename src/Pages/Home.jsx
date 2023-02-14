@@ -14,52 +14,61 @@ export default function Home() {
 
     return (
         <>
+
             <div className='HM-bg'>
                 <div className=' container-fluid text-white text-center'>
-                    <div className="row g-3 p-3 ">
-                        {
-                            profile.map((N, _id) =>
-                                <div key={_id} className=" col-sm-12 col-md-3">
-                                    <div className='HM-headName '>
-                                        <h1 className=''>{N.title.slice(0, 20)}...</h1>
-                                        <span className='HM-Date'>{N.updatedAt.slice(0, 10)}</span>
-                                    </div>
-                                    <div className='HM-bg-note  text-center d-flex justify-align-content-between align-align-content-center'>
-                                        <div className='w-100 p-3'>
-                                            <p>{N.desc.slice(0, 300)}...</p>
-                                        </div>
-                                        <div className="dropdown">
-                                            <button className="btn btn-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fa-solid fa-ellipsis-vertical"></i></button>
-                                            <ul className="dropdown-menu">
-                                                <li>
-                                                    <Link to={`notedetails/${N._id}`}>
-                                                        <button type="button" className=" btn " data-bs-toggle="modal" data-bs-target="#openNote">
-                                                            <i className="fa-solid fa-folder-open me-3"></i>
-                                                            Open
-                                                        </button>
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link to={`editenote/${N._id}`}>
-                                                        <button type="button" className=" btn " data-bs-toggle="modal" data-bs-target="#editeNote">
-                                                            <i className="fa-solid fa-pen me-3"></i>
-                                                            Edit
-                                                        </button>
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <button onClick={() => deleteNote(N)} type="button" className=" btn " >
-                                                        <i className="fa-solid fa-trash me-3"></i>
-                                                        Delete
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                    {
+                        profile.length ? <>
+                            <div className="row g-3 p-3 ">
+                                <div className='HM-btn_writeNote'>
+                                    <Link to="addnote">
+                                        <button className='button_create'>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Create
+                                            </span>
+                                        </button>
+                                    </Link>
                                 </div>
-                            )
-                        }
-                    </div>
+
+                                {
+                                    profile.map((N, _id) =>
+                                        <div key={_id} className=" col-sm-12 col-md-3" >
+                                            <div className='HM-headName '>
+                                                <div className=' '>
+                                                    <div className='  d-flex justify-content-between'>
+                                                        <Link to={`editenote/${N._id}`}>
+                                                            <button className='  btn btn-primary me-2'>
+                                                                <i className="fa-solid fa-pen"></i>
+                                                            </button>
+                                                        </Link>
+                                                        <h1 className=''>{N.title.slice(0, 10)}...</h1>
+                                                        <button onClick={() => deleteNote(N)} className="btn btn-danger "><i className="  fa-solid fa-trash"></i></button>
+                                                    </div>
+                                                </div>
+                                                <span className='HM-Date'>{N.updatedAt.slice(0, 10)}</span>
+                                            </div>
+                                            <div className='HM-bg-note  text-center d-flex justify-align-content-between align-align-content-center'>
+                                                <div className='w-100 p-3'>
+                                                    <p>{N.desc.slice(0, 300)} <Link className=' text-warning' to={`notedetails/${N._id}`}> ... Read More </Link></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </> : <>
+                            <div className='HM-bg_writeNote'>
+                                <Link to="addnote">
+                                    <button className='button_create'>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg> Create
+                                        </span>
+                                    </button>
+                                </Link>
+                            </div>
+                        </>
+                    }
+
                 </div>
             </div>
         </>

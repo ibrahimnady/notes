@@ -11,6 +11,7 @@
     -ms-border-radius    : 10px;
     -o-border-radius     : 10px;
     overflow             : hidden;
+    height               : 150px;
 }
 
 .HM-headName {
@@ -36,12 +37,12 @@
     align-items    : center;
     color          : black;
 }
-.HM-btn_writeNote{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: max-content;
-    margin-bottom: 5px;
-    
-}
 
+.HM-btn_writeNote {
+    position     : fixed;
+    bottom       : 0;
+    right        : 0;
+    width        : max-content;
+    margin-bottom: 5px;
+
+}

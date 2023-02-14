@@ -49,7 +49,7 @@ export default function Home() {
                                             </div>
                                             <div className='HM-bg-note  text-center d-flex justify-align-content-between align-align-content-center'>
                                                 <div className='w-100 p-3'>
-                                                    <p>{N.desc.slice(0, 300)} <Link className=' text-warning' to={`notedetails/${N._id}`}> ... Read More </Link></p>
+                                                    <p>{N.desc.slice(0, 250)} <Link className=' text-warning' to={`notedetails/${N._id}`}> ... Read More </Link></p>
                                                 </div>
                                             </div>
                                         </div>

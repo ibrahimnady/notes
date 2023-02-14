@@ -49,7 +49,7 @@ export default function Register() {
     }
     function validateRegisterForm(user) {
         let schema = Joi.object({
-            userName: Joi.string().alphanum().min(3).max(8).required(),
+            userName: Joi.string().alphanum().min(3).max(15).required(),
             email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
             password: Joi.string().pattern(/^[A-Za-z0-9]{3,15}$/).required(),
             cpassword: Joi.string().pattern(/^[A-Za-z0-9]{3,15}$/).required(),

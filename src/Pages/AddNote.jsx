@@ -1,11 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import '../Styles/AddNote.css'
 import { Notes } from '../Context/APIContext';
 
 
 
 export default function AddNote() {
-    const { getNote, createNote } = useContext(Notes);
+    const { disable, getNote, createNote } = useContext(Notes);
+
 
     return (
         <>
@@ -17,7 +18,7 @@ export default function AddNote() {
                         <label htmlFor="title">head Note</label>
                     </div>
                     <textarea rows="10" onChange={getNote} type="text" className="form-control" id="desc" name='desc' placeholder='desc' />
-                    <button type="submit" className="btn btn-success mt-3 mb-5">create</button>
+                    {disable ? <button type="submit" className="btn btn-success mt-3 mb-5">create</button> : <button disabled type="submit" className="btn btn-success mt-3 mb-5">create</button>}
                 </form>
             </div>
         </>

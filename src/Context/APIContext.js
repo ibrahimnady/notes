@@ -8,6 +8,7 @@ export function NotesContextProvider(props) {
     let Navigate = useNavigate()
     const [profile, setProfile] = useState([])
     const [userName, setUserName] = useState("")
+    const [disable, setDisable] = useState(false)
     const [note, setNote] = useState({
         title: "",
         desc: ""
@@ -21,6 +22,7 @@ export function NotesContextProvider(props) {
         let myNote = { ...note }
         myNote[e.target.name] = e.target.value;
         setNote(myNote)
+        setDisable(true)
 
     }
     function getEdit(e) {
@@ -28,6 +30,7 @@ export function NotesContextProvider(props) {
         myEdit[e.target.name] = e.target.value;
         setEdit(myEdit)
         console.log(edit);
+
     }
 
     const createNote = async (e) => {
@@ -39,6 +42,7 @@ export function NotesContextProvider(props) {
             }
         })
         setNote(data)
+        setEdit(data)
         if (data.message === "Done") {
             Navigate('/home')
         } else {
@@ -82,6 +86,7 @@ export function NotesContextProvider(props) {
 
     return <Notes.Provider value={
         {
+            disable,
             note,
             setEdit,
             edit,
